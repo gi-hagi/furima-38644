@@ -11,13 +11,10 @@
 | first_name         | string | null: false               |
 | last_name_kana     | string | null: false               |
 | first_name_kana    | string | null: false               |
-| birthday           | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
-
 * has_many :products
-* has_many :managements
-- has_one :customer
 
 #　products テーブル
 
@@ -34,7 +31,6 @@
 | user              | references | null: false, foreign_key: true |
 
 ### Association
-* has_many :managements
 - belongs_to :user
 - has_one :customer
 
@@ -48,21 +44,18 @@
 | address        | string     | null: false                    |
 | build          | string     |                                |
 | phone          | string     | null: false                    |
-| user           | references | null: false, foreign_key: true |
+| management     | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :user
 - has_one :product
-- belongs_to :management
+- belongs_to :management  
 
 # managements テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
-| user           | references | null: false, foreign_key: true |
-| product        | references | null: false, foreign_key: true |
+| customer       | references | null: false, foreign_key: true |
+
 
 ### Association
-- belongs_to :user
-- belongs_to :product
-- belongs_to :customer
+- has_many :customer
