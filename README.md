@@ -13,29 +13,56 @@
 | first_name_kana    | string | null: false               |
 | birthday           | string | null: false               |
 
-#　productテーブル
+### Association
 
-| Column         | Type       | Options                        |
-| -------------- | -----------| ------------------------------ |
-| title          | string     | null: false                    |
-| concept        | text       | null: false                    |
-| category       | string     | null: false                    |
-| situation      | string     | null: false                    |
-| delivery_price | string     | null: false                    |
-| area           | string     | null: false                    |
-| date           | string     | null: false                    |
-| price          | string     | null: false                    |
-| user           | references | null: false, foreign_key: true |
+* has_many :products
+* has_many :managements
+- has_one :customer
 
-# customer
+#　products テーブル
+
+| Column            | Type       | Options                        |
+| ----------------- | -----------| ------------------------------ |
+| title             | string     | null: false                    |
+| concept           | text       | null: false                    |
+| category_id       | integer    | null: false                    |
+| situation_id      | integer    | null: false                    |
+| delivery_price_id | integer    | null: false                    |
+| area_id           | integer    | null: false                    |
+| delivery_date_id  | integer    | null: false                    |
+| price             | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
+
+### Association
+* has_many :managements
+- belongs_to :user
+- has_one :customer
+
+# customers テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
 | post_code      | string     | null: false                    |
-| pref           | string     | null: false                    |
+| area_id        | integer    | null: false                    |
 | city           | string     | null: false                    |
 | address        | string     | null: false                    |
 | build          | string     |                                |
 | phone          | string     | null: false                    |
 | user           | references | null: false, foreign_key: true |
+
+### Association
+- has_one :user
+- has_one :product
+- belongs_to :management
+
+# managements テーブル
+
+| Column         | Type       | Options                        |
+| -------------- | -----------| ------------------------------ |
+| user           | references | null: false, foreign_key: true |
 | product        | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :product
+- belongs_to :customer
