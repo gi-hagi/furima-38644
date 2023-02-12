@@ -30,7 +30,6 @@
 | delivery_date_id  | integer    | null: false                    |
 | price             | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
-| management        | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -49,7 +48,7 @@
 | management     | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :management  
+- belongs_to :management  
 
 # managements テーブル
 
@@ -62,4 +61,4 @@
 ### Association
 - has_one :customer
 - belongs_to :user
-- has_one :product
+- belongs_to :product
