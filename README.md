@@ -15,6 +15,7 @@
 
 ### Association
 * has_many :products
+* has_many :managements
 
 #　products テーブル
 
@@ -29,10 +30,11 @@
 | delivery_date_id  | integer    | null: false                    |
 | price             | integer    | null: false                    |
 | user              | references | null: false, foreign_key: true |
+| management        | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_one :customer
+- has_one :management
 
 # customers テーブル
 
@@ -47,15 +49,17 @@
 | management     | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :product
-- belongs_to :management  
+- has_one :management  
 
 # managements テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
 | customer       | references | null: false, foreign_key: true |
-
+| user           | references | null: false, foreign_key: true |
+| product        | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :customer
+- has_one :customer
+- belongs_to :user
+- has_one :product
