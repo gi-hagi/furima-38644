@@ -1,24 +1,63 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#　usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+| ------------------ | -------| ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| last_name          | string | null: false               |
+| first_name         | string | null: false               |
+| last_name_kana     | string | null: false               |
+| first_name_kana    | string | null: false               |
+| birthday           | date   | null: false               |
 
-* Ruby version
+### Association
+* has_many :products
+* has_many :managements
 
-* System dependencies
+#　products テーブル
 
-* Configuration
+| Column            | Type       | Options                        |
+| ----------------- | -----------| ------------------------------ |
+| title             | string     | null: false                    |
+| concept           | text       | null: false                    |
+| category_id       | integer    | null: false                    |
+| situation_id      | integer    | null: false                    |
+| delivery_price_id | integer    | null: false                    |
+| area_id           | integer    | null: false                    |
+| delivery_date_id  | integer    | null: false                    |
+| price             | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
+- belongs_to :user
+- has_one :management
 
-* Database initialization
+# customers テーブル
 
-* How to run the test suite
+| Column         | Type       | Options                        |
+| -------------- | -----------| ------------------------------ |
+| post_code      | string     | null: false                    |
+| area_id        | integer    | null: false                    |
+| city           | string     | null: false                    |
+| address        | string     | null: false                    |
+| build          | string     |                                |
+| phone          | string     | null: false                    |
+| management     | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :management  
 
-* Deployment instructions
+# managements テーブル
 
-* ...
+| Column         | Type       | Options                        |
+| -------------- | -----------| ------------------------------ |
+| user           | references | null: false, foreign_key: true |
+| product        | references | null: false, foreign_key: true |
+
+### Association
+- has_one :customer
+- belongs_to :user
+- belongs_to :product
