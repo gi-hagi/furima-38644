@@ -54,7 +54,6 @@
 
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
-| customer       | references | null: false, foreign_key: true |
 | user           | references | null: false, foreign_key: true |
 | product        | references | null: false, foreign_key: true |
 
