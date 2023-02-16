@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/}
-  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/}
+  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥-々-ー]/}
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥-々-ー]/}
   validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
   validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
   validates :birthday, presence: true
