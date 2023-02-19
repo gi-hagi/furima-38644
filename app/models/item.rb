@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :title, presence: true
-  validates :text, presence: true
+  validates :concept, presence: true
   validates :category_id, presence: true
   validates :situation_id, presence: true
   validates :delivery_price_id, presence: true
