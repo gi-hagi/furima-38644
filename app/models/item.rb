@@ -19,9 +19,9 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :delivery_date
 
-  validates :category, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :situation, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :delivery_price, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :area, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :delivery_date, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :situation_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :delivery_price_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :area_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :delivery_date_id, numericality: { other_than: 1 , message: "can't be blank"}
 end
