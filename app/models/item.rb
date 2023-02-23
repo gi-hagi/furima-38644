@@ -11,7 +11,7 @@ class Item < ApplicationRecord
   validates :delivery_price_id, presence: true
   validates :area_id, presence: true
   validates :delivery_date_id, presence: true
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }, format: { with: /\A[0-9]+\z/ }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
