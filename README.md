@@ -14,10 +14,10 @@
 | birthday           | date   | null: false               |
 
 ### Association
-* has_many :products
+* has_many :items
 * has_many :managements
 
-#　products テーブル
+#　items テーブル
 
 | Column            | Type       | Options                        |
 | ----------------- | -----------| ------------------------------ |
@@ -35,7 +35,7 @@
 - belongs_to :user
 - has_one :management
 
-# customers テーブル
+# orders テーブル
 
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
@@ -55,9 +55,9 @@
 | Column         | Type       | Options                        |
 | -------------- | -----------| ------------------------------ |
 | user           | references | null: false, foreign_key: true |
-| product        | references | null: false, foreign_key: true |
+| item           | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :customer
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
