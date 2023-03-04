@@ -1,8 +1,10 @@
 class ManagementsController < ApplicationController
   def index
-    #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
+    @management_form = ManagementForm.new
+    @item = Item.find(params[:item_id])
   end
 
   def create
+
   end
 end
