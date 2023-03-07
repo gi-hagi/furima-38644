@@ -5,6 +5,5 @@ class Order < ApplicationRecord
   validates :area_id,   presence: true
   validates :city,      presence: true
   validates :address,   presence: true
-  validates :build
   validates :phone,     presence: true
 end

@@ -4,17 +4,16 @@ class ManagementForm
 
   with_options presence: true do
     validates :post_code
-    validates :area_id
+    validates :area_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :city
     validates :address
-    validates :build
     validates :phone
-    validates :user_id #management
-    validates :item_id #management
+    validates :user_id
+    validates :item_id
   end
 
   def save
-    Order.create(post_code: post_code, area_id: area_id, city: city, adress: adress, build: build, phone: phone)
-    Management.create(user_id: user_id, item_id: item_id)
+    management = Management.create(user_id: user_id, item_id: item_id)
+    Order.create(post_code: post_code, area_id: area_id, city: city, address: address, build: build, phone: phone, management_id: management.id)
   end
 end
