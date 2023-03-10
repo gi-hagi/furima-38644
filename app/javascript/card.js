@@ -1,5 +1,5 @@
 const pay = () => {
-  const payjp = Payjp('pk_test_d532c778fcd1b20b21bf7487')// PAY.JPテスト公開鍵
+  const payjp = Payjp('pk_test_d532c778fcd1b20b21bf7487')
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
@@ -10,6 +10,7 @@ const pay = () => {
   cvcElement.mount('#cvc-form');
 
   const submit = document.getElementById("button");
+  
   submit.addEventListener("click", (e) => {
     e.preventDefault();
     payjp.createToken(numberElement).then(function (response) {
