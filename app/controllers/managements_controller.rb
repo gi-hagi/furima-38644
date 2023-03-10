@@ -8,7 +8,6 @@ class ManagementsController < ApplicationController
 
   def create
     @management_form = ManagementForm.new(order_params)
-    #binding.pry
     if @management_form.valid?
       @management_form.save
       redirect_to root_path
