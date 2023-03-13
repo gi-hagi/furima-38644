@@ -1,9 +1,13 @@
 class ManagementsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :management_action, only: [:index, :create]
+  before_action :log_edit, only: [:index, :create]
 
   def index
     @management_form = ManagementForm.new
+    if @item.management.present?
+      redirect_to root_path
+    end
   end
 
   def create
@@ -24,6 +28,10 @@ class ManagementsController < ApplicationController
 
   def order_params
     params.require(:management_form).permit(:post_code, :area_id, :city, :address, :build, :phone, :management_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+  end
+
+  def log_edit
+    redirect_to root_path if current_user == @item.user 
   end
 
   def pay_item
