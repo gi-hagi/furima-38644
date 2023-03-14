@@ -25,20 +25,31 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if @item.management.present?
+      redirect_to root_path
+    end
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to item_path
+    if @item.management.present?
+      redirect_to root_path
     else
-      render :edit
+      if @item.update(item_params)
+        redirect_to item_path
+      else
+        render :edit
+      end
     end
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    if @item.management.present?
+      redirect_to root_path
+    else
+      item = Item.find(params[:id])
+      item.destroy
+      redirect_to root_path
+    end
   end
 
 

@@ -58,6 +58,6 @@
 | item           | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :customer
+- has_one :order
 - belongs_to :user
 - belongs_to :item
