@@ -18,6 +18,11 @@ RSpec.describe ManagementForm, type: :model do
       end
     end
     context "商品が保存できない場合" do
+      it 'tokenがからでは購入できない。' do
+        @management_form.token = nil
+        @management_form.valid?
+        expect(@management_form.errors.full_messages).to include("Token can't be blank")
+      end
       it '郵便番号が空では保存できない' do
         @management_form.post_code = nil
         @management_form.valid?
