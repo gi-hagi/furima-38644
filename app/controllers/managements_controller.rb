@@ -27,7 +27,7 @@ class ManagementsController < ApplicationController
   end
 
   def order_params
-    params.require(:management_form).permit(:post_code, :area_id, :city, :address, :build, :phone, :management_id).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:management_form).permit(:post_code, :area_id, :city, :address, :build, :phone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def log_edit
